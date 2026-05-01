@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pde-opt"
+description = ""
+version = "0.0.0"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "scipy"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+    "pre-commit",
+]
