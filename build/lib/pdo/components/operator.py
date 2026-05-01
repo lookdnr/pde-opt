@@ -39,9 +39,9 @@ class PoissonOperator:
         T = sp.diags([T_offdiag, T_diag, T_offdiag], offsets=[-1, 0, 1], format="csr")
 
         # construct identity
-        identity = sp.eye(N, format="csr")
+        I = sp.eye(N, format="csr")
 
-        return T, identity
+        return T, I
 
     # spy the discrete operator structure
     def show(self) -> None:

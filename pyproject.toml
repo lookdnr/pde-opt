@@ -19,3 +19,9 @@ dev = [
     "flake8",
     "pre-commit",
 ]
+
+[tool.flake8]
+extend-ignore = ["E741"]
+
+[tool.black]
+target-version = ["py313"]
