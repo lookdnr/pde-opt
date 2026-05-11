@@ -5,7 +5,9 @@ import numpy as np
 class SteepestDescent(Optimiser):
     # steepest descent optimisation loop
     def optimise(self):
-        q = self.q0
+        # ensure fresh monitor and work on a copy of the initial guess
+        self.monitor = self.monitor.__class__()
+        q = self.q0.copy()
 
         for k in range(self.max_iter):
             state = self.problem._solve_state(q)  # solve state equation A phi = q
@@ -41,5 +43,6 @@ class SteepestDescent(Optimiser):
             self.monitor.exit_reason = "max_iter reached"
         else:
             self.monitor.exit_reason = "Succesful convergence"
+        self.has_run = True
 
         return q, self.monitor

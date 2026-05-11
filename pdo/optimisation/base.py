@@ -34,6 +34,7 @@ class Optimiser:
         self.max_iter = max_iter  # iteration cap for optimisation loop
         self.min_alpha = min_alpha  # lower bound on line-search step
         self.max_backtracks = max_backtracks  # safeguard against endless backtracking
+        self.has_run = False  # flag set after optimise() completes
 
     # inner product a dot b
     def _inner(self, a: Variable, b: Variable) -> float:

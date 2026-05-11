@@ -113,3 +113,7 @@ class Variable:
     # sum functionality for functional evaluation
     def sum(self):
         return self._data.sum()
+
+    def copy(self) -> "Variable":
+        """Return a deep copy of this Variable (new underlying array)."""
+        return Variable(self.domain, init=self._data.copy())
