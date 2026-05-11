@@ -55,6 +55,7 @@ class Optimiser:
                 self.problem.J(control + direction * alpha)
                 <= J0 + self.c * alpha * slope
             ):
+                self.trial = alpha
                 return alpha
 
             alpha *= self.tau
