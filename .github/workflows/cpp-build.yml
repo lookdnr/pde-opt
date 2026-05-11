@@ -1,0 +1,24 @@
+name: C++ Build Check
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - porting
+  pull_request:
+
+jobs:
+  build-cpp:
+    if: ${{ contains(fromJson('["main","dev","porting"]'), github.base_ref) || contains(fromJson('["main","dev","porting"]'), github.head_ref) }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: cmake -S pdo-cpp -B pdo-cpp/build-ci -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build pdo-cpp/build-ci --config Release --parallel
